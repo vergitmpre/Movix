@@ -42,18 +42,20 @@ function HeroBanner() {
       <div className="opacity-layer"></div>
 
       <ContentWrapper>
-        <span className="title">Welcome.</span>
-        <span className="subTitle">
-          Millions of movies, TV shows and people to discover. Explore now.
-        </span>
-        <div className="searchInput">
-          <input
-            type="text"
-            placeholder="Search for a movie of tv show...."
-            onChange={(e) => setQuery(e.target.value)}
-            onKeyDown={handleSearchQuery}
-          />
-          <button>Search</button>
+        <div className="heroBannerContent">
+          <span className="title">Welcome.</span>
+          <span className="subtitle">
+            Millions of movies, TV shows and people to discover. Explore now.
+          </span>
+          <div className="searchInput">
+            <input
+              type="text"
+              placeholder="Search for a movie of tv show...."
+              onChange={(e) => setQuery(e.target.value)}
+              onKeyDown={handleSearchQuery}
+            />
+            <button>Search</button>
+          </div>
         </div>
       </ContentWrapper>
     </div>
