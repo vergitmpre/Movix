@@ -1,17 +1,25 @@
 import { useEffect } from "react";
 import { fetchDataFromApi } from "./utils/api";
+import { getApiConfiguration, getUrl } from "./store/homeSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 function App() {
-  useEffect(function () {
-    const apiTesting = async () => {
-      const data = await fetchDataFromApi("/movie/popular");
-      console.log(data);
-    };
+  const dispatch = useDispatch();
+  const url = useSelector(getUrl);
 
-    apiTesting();
-  }, []);
+  useEffect(
+    function () {
+      const apiTesting = async () => {
+        const data = await fetchDataFromApi("/movie/popular");
+        dispatch(getApiConfiguration(data));
+      };
 
-  return <div>App</div>;
+      apiTesting();
+    },
+    [dispatch]
+  );
+
+  return <div>{url?.total_pages}</div>;
 }
 
 export default App;
