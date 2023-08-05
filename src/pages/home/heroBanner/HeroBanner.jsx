@@ -58,8 +58,6 @@ function HeroBanner() {
           </div>
         </div>
       </ContentWrapper>
-
-      <div style={{ height: "2000px", width: "1px" }}></div>
     </div>
   );
 }
