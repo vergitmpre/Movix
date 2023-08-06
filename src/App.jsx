@@ -1,7 +1,7 @@
 import { useCallback, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { fetchDataFromApi } from "./utils/api";
-import { getApiConfiguration, getGenres, getUrl } from "./store/homeSlice";
+import { getApiConfiguration, getGenres } from "./store/homeSlice";
 
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
@@ -14,7 +14,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
   const dispatch = useDispatch();
-  // const url = useSelector(getUrl);
 
   const genresCall = useCallback(async () => {
     let promises = [];
