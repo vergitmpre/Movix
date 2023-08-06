@@ -38,15 +38,21 @@ function Carousel({ data, loading, endpoint, title }) {
   return (
     <div className="carousel">
       <ContentWrapper>
-        {title && <div className="carouselTitle">{title}</div>}
-        <BsFillArrowLeftCircleFill
-          className="carouselLeftNav arrow"
-          onClick={() => navigation("left")}
-        />
-        <BsFillArrowRightCircleFill
-          className="carouselRightNav arrow"
-          onClick={() => navigation("right")}
-        />
+        {title && data?.length > 0 && (
+          <div className="carouselTitle">{title}</div>
+        )}
+        {data?.length > 0 && (
+          <>
+            <BsFillArrowLeftCircleFill
+              className="carouselLeftNav arrow"
+              onClick={() => navigation("left")}
+            />
+            <BsFillArrowRightCircleFill
+              className="carouselRightNav arrow"
+              onClick={() => navigation("right")}
+            />
+          </>
+        )}
         {!loading ? (
           <div className="carouselItems" ref={carouselContainer}>
             {data?.map((item) => {

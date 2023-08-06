@@ -39,6 +39,7 @@ function SearchResult() {
   };
 
   useEffect(() => {
+    setPageNum(1);
     fetchInitialData();
   }, [query, fetchInitialData]);
 
