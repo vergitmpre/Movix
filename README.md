@@ -19,7 +19,7 @@ Movix - Ultimate Movie and TV Show Discovery Platform</h2>
 
 <h3>🚀 Live Demo</h3>
 
-[movix-pm7jydw7l-masud-rana44.vercel.app](movix-pm7jydw7l-masud-rana44.vercel.app)
+[https://movix-taupe.vercel.app](https://movix-taupe.vercel.app)
 
 <h5>Tending & Popular Movies:</h5>
 
