@@ -13,15 +13,23 @@ import Img from "../../../components/lazyLoadImage/Img.jsx";
 import PosterFallback from "../../../assets/no-poster.png";
 import { getUrl } from "../../../store/homeSlice";
 import { PlayIcon } from "./PlayIcon";
+import VideoPopup from "../../../components/videoPopup/VideoPopup";
 
 const DetailsBanner = ({ video, crew }) => {
+  const [show, setShow] = useState(false);
+  const [videoId, setVideoId] = useState(null);
+
   const { mediaType, id } = useParams();
   const { data, loading } = useFetch(`/${mediaType}/${id}`);
 
   const url = useSelector(getUrl);
 
-  const _genres = data?.genres.map((g) => g.name);
-  console.log(_genres);
+  const _genres = data?.genres.map((genre) => genre.name);
+
+  const director = crew?.filter((cr) => cr.job === "Director");
+  const writer = crew?.filter(
+    (cr) => cr.job === "Screenplay" || cr.job === "Story" || cr.job === "Writer"
+  );
 
   const toHoursAndMinutes = (totalMinutes) => {
     const hours = Math.floor(totalMinutes / 60);
@@ -61,7 +69,13 @@ const DetailsBanner = ({ video, crew }) => {
 
                     <div className="row">
                       <CircleRating rating={data.vote_average.toFixed(1)} />
-                      <div className="playbtn" onClick={() => {}}>
+                      <div
+                        className="playbtn"
+                        onClick={() => {
+                          setShow(true);
+                          setVideoId(video?.key);
+                        }}
+                      >
                         <PlayIcon />
                         <span className="text">Watch Trailer</span>
                       </div>
@@ -98,9 +112,57 @@ const DetailsBanner = ({ video, crew }) => {
                         </div>
                       )}
                     </div>
+
+                    {director?.length > 0 && (
+                      <div className="info">
+                        <span className="text bold">Director:</span>
+                        <span className="text">
+                          {director.map((dir, idx) => (
+                            <span key={idx}>
+                              {dir.name}
+                              {director.length - 1 !== idx && ", "}
+                            </span>
+                          ))}
+                        </span>
+                      </div>
+                    )}
+
+                    {writer?.length > 0 && (
+                      <div className="info">
+                        <span className="text bold">Writer:</span>
+                        <span className="text">
+                          {writer.map((dir, idx) => (
+                            <span key={idx}>
+                              {dir.name}
+                              {writer.length - 1 !== idx && ", "}
+                            </span>
+                          ))}
+                        </span>
+                      </div>
+                    )}
+
+                    {data?.created_by?.length > 0 && (
+                      <div className="info">
+                        <span className="text bold">Creator:</span>
+                        <span className="text">
+                          {data.created_by.map((dir, idx) => (
+                            <span key={idx}>
+                              {dir.name}
+                              {data.created_by.length - 1 !== idx && ", "}
+                            </span>
+                          ))}
+                        </span>
+                      </div>
+                    )}
                   </div>
                 </div>
               </ContentWrapper>
+              <VideoPopup
+                show={show}
+                setShow={setShow}
+                videoId={videoId}
+                setVideoId={setVideoId}
+              />
             </Fragment>
           )}
         </>
