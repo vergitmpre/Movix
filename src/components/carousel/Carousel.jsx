@@ -16,7 +16,7 @@ import { getUrl } from "../../store/homeSlice";
 import CircleRating from "../circleRating/CircleRating";
 import Genres from "../genres/Genres";
 
-function Carousel({ data, loading }) {
+function Carousel({ data, loading, endpoint }) {
   const navigate = useNavigate();
   const carouselContainer = useRef();
   const url = useSelector(getUrl);
@@ -57,7 +57,9 @@ function Carousel({ data, loading }) {
                 <div key={item.id} className="carouselItem">
                   <div
                     className="posterBlock"
-                    onClick={() => navigate(`/${item.media_type}/${item.id}`)}
+                    onClick={() =>
+                      navigate(`/${item.media_type || endpoint}/${item.id}`)
+                    }
                   >
                     <Img src={posterUrl} alt={item.title} />
                     <CircleRating rating={item.vote_average.toFixed(1)} />
