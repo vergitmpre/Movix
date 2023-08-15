@@ -3,7 +3,7 @@ Movix - Ultimate Movie and TV Show Discovery Platform</h2>
 
 <p align="center"><img src="./src/assets/screenshort/1.PNG" alt="Movix homepage"></p>
 
-<p>Welcome to Movix, a cutting-edge web application crafted with React and Redux, designed to revolutionize your movie and TV show searching experience. Dive into the captivating world of entertainment as you explore trending, popular, and upcoming releases on a daily and weekly basis. With an intuitive interface, Movix offers movie enthusiasts a treasure trove of information, from movie names and posters to genres and ratings. Discover comprehensive details for each title, including exhilarating trailers and exciting supplementary videos. Embrace the magic of recommendations as Movix suggests similar movies, making your journey through entertainment seamless and immersive. Unlock the full potential of searching with advanced filtering options based on criteria that suit your preferences. All the data is fetched from TMDB Api.</p>
+<p>Movix is a web application built using React and Redux that allows users to search for movies and TV shows, view popular, trending, and upcoming releases on a daily and weekly basis, and explore detailed information about each title, including trailers and related videos.</p>
 
 <h3>📝 Features</h3>
 
